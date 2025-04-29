@@ -21,10 +21,10 @@ const courseSchema=mongoose.Schema({
   creator: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Admin',
-    required: true,
-  },
+ },
 }, { timestamps: true });
 
 
 const courseModel=mongoose.model("Course",courseSchema);
+
 module.exports=courseModel

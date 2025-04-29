@@ -1,6 +1,7 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 
-const adminSchema=mongoose.Schema({
+const adminSchema = mongoose.Schema(
+  {
     firstName: {
       type: String,
       required: true,
@@ -26,7 +27,8 @@ const adminSchema=mongoose.Schema({
   },
 
   { timestamps: true }
-)
+);
 
-const adminModel=mongoose.model("Admin",adminSchema);
-module.exports=adminModel
+const adminModel = mongoose.model("Admin", adminSchema);
+
+module.exports = adminModel;
