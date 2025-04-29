@@ -1,4 +1,5 @@
 const express=require("express");
+require("dotenv").config()
 const userRouter = require("./router/user");
 const courseRouter = require("./router/course");
 const adminRouter = require("./router/admin");
@@ -15,7 +16,9 @@ app.use("/api/v1/course",courseRouter)
 
 connectionToDB().then(()=>{
   console.log("connecte to db successfully")
-  app.listen(7001)
+  app.listen(7001,()=>{
+    console.log(`http://localhost:7001/`);
+  })
 }).catch((error)=>{
   console.log(error)
 })
