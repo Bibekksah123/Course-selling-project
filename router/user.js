@@ -3,6 +3,7 @@ const validator = require("../utils/validation");
 const userModel=require("../model/user");
 const jwt=require("jsonwebtoken");
 const userMiddlewareChecker = require("../middleware/user");
+const purchaseModel = require("../model/purchase");
 
 const userRouter=express.Router()
 
@@ -53,9 +54,11 @@ userRouter.post("/singin", async function (req, res) {
   }
 });
 
-userRouter.get("/purchases",userMiddlewareChecker, function (req, res) {
+userRouter.get("/purchases",userMiddlewareChecker,async function (req, res) {
+  const coursePurchaseList=await purchaseModel.find({userId:req?.user})
   res.status(201).json({
-    message: "singup endpoint",
+    message: "Your course purchase list",
+    coursePurchaseList
   });
 });
 
